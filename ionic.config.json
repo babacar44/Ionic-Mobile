@@ -1,5 +1,7 @@
 {
   "name": "warimaApps",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar  color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>transaction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+        <form class="form"  style="margin: 0 auto" >  
+  
+        <ion-item>
+            <ion-input  placeholder="Destinataire" class="form-control" [(ngModel)]="postEnvoi.Destinataire" name="Destinataire"> </ion-input>
+        </ion-item>
+        
+         <ion-item>
+              <ion-input  placeholder="Envoyeur" class="form-control" name="Envoyeur" [(ngModel)]="postEnvoi.Envoyeur" ></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input placeholder="Montant" class="form-control" [(ngModel)]="postEnvoi.Montant" name="Montant"></ion-input>
+      </ion-item>
+
+    
+          <ion-item>
+            <ion-input placeholder="cniEnvoyeur" class="form-control" [(ngModel)]="postEnvoi.cniEnvoyeur" name="cniEnvoyeur"></ion-input>
+        </ion-item>
+    
+          <ion-item>
+            <ion-input  placeholder="telEnvoyeur" class="form-control" [(ngModel)]="postEnvoi.telEnvoyeur" name="telEnvoyeur"></ion-input>
+        </ion-item>
+
+          <ion-item>
+              <ion-input  placeholder="telRecepteur" class="form-control" [(ngModel)]="postEnvoi.telRecepteur" name="telRecepteur"></ion-input>
+        </ion-item>
+    
+          <ion-button  (click)="faireEnvoi()" expand="block" color="success">
+            Envoyer
+          </ion-button>     
+      </form>  
+</ion-content>
+
