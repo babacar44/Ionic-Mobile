@@ -27,6 +27,9 @@ export class OperationsService {
 
     
 }
+getItOperationById(id) : Observable<[]>{
+  return this.http.get<[]>(this._getIt + id);
+}
 
   getRetrait(data){  
     return this.http.post<any>(this._retrait,data)
@@ -50,7 +53,5 @@ console.log(dat)
 ListerOperations() :Observable<any>{
   return this.http.get<any>(this._OperationsList);
 }
-getItById(id) : Observable<any>{
-  return this.http.get<any>(this._getIt + id);
-}
+
 }

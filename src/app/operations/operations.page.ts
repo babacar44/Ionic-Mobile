@@ -9,7 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class OperationsPage implements OnInit {
   Operations : [];
-
+  id:number;
+  op: any;
   constructor(private operlist : OperationsService,private router :Router
     ,private route :ActivatedRoute) { }
 
@@ -24,8 +25,12 @@ export class OperationsPage implements OnInit {
       error=>console.log(error),
     )
   }
+  getOp(){
+
+    
+  }
   listOperationById(id:number){
-    this.router.navigate(['/menu/list-operation-id',id]);
+    this.router.navigate(['/menu/list-operation-id/',id]);
   }
  
 
