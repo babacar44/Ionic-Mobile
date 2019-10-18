@@ -14,6 +14,7 @@ export class MenuPage implements OnInit {
     {title:'Transaction',url:'/menu/transaction',icon:'git-compare'},
     {title:'Operations',url:'/menu/operations',icon:'eye'},
     {title:'Commissions',url:'/menu/commissions',icon:'logo-usd'},
+    {title:'operationsList',url:'/menu/list-operation-id',icon:'logo-usd'},
     {title:'Logout',url:'logout',icon:'walk'},
   ]
   constructor(private router :Router, private auth : AuthenticationService) { }

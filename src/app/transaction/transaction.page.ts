@@ -2,6 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { OperationsService } from '../services/operations.service';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-transaction',
@@ -17,7 +18,7 @@ afficherRecu=false;
 
   constructor(private _operationService : OperationsService,
     private _router : Router,
-    // private _toastr : ToastrService,
+    private _toastr : ToastrService,
     private _injector : Injector) { }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ afficherRecu=false;
       console.log(this.postEnvoi)
 
         console.log(data);
+        this._toastr.success('envoi effectué');
       this._router.navigateByUrl("/menu/operations")},
     )
 }else{

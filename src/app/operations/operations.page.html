@@ -7,6 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
+    <ion-item  >
+        <ion-label>Operations Details</ion-label>
+        <ion-icon slot="start" color="success" name="add-circle" [routerLink]="['/menu/transaction']"></ion-icon>
+      </ion-item>
+      <ion-item >
+          <ion-label>Date</ion-label>
+          <ion-label>Status</ion-label>
+      </ion-item>
+      <ion-list>     
+<ion-item *ngFor="let o of Operations" >
+  <ion-label>{{o.date}}</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ion-label>{{o.statut}}</ion-label>
+  <ion-icon slot="end" color="success" name="create" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>
+  <ion-icon slot="end" color="success" name="trash"></ion-icon>
+</ion-item>
+</ion-list>
 </ion-content>

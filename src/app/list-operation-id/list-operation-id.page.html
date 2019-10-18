@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listOperationId</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list>     
+<ion-item *ngFor="let o of Operations" >
+  <ion-label>{{o.date}}</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ion-label>{{o.statut}}</ion-label> 
+</ion-item>
+</ion-list>
+</ion-content>

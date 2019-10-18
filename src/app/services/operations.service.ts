@@ -1,6 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ export class OperationsService {
   private _envoiUrl = "http://localhost:8000/api/envoi";
   private _retrait = " http://localhost:8000/api/codeFinder";
   private _okRetrait =" http://localhost:8000/api/retrait";
+  private _OperationsList = " http://localhost:8000/api/listerOperation";
+
+  private _getIt ="http://localhost:8000/api/listeroperations/";
   
   constructor(private http : HttpClient, private _injector : Injector) { }
 
@@ -43,5 +47,10 @@ console.log(dat)
 // getAllEnvoi() : Observable<Ienvoi[]>{
 //   // return this.http.get<Ienvoi[]>();
 // }
-
+ListerOperations() :Observable<any>{
+  return this.http.get<any>(this._OperationsList);
+}
+getItById(id) : Observable<any>{
+  return this.http.get<any>(this._getIt + id);
+}
 }

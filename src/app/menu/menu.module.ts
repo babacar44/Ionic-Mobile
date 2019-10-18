@@ -17,6 +17,8 @@ const routes: Routes = [
       { path: 'transaction', loadChildren: '../transaction/transaction.module#TransactionPageModule' },
       { path: 'operations', loadChildren: '../operations/operations.module#OperationsPageModule' },
       { path: 'commissions', loadChildren: '../commissions/commissions.module#CommissionsPageModule' },
+      { path: 'list-operation-id', loadChildren: '../list-operation-id/list-operation-id.module#ListOperationIdPageModule' },
+
     ]
   },
 ];
