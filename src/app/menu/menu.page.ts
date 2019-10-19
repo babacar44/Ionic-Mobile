@@ -10,12 +10,18 @@ import { AuthenticationService } from '../services/authentication.service';
 export class MenuPage implements OnInit {
 
   menus = [
-    {title:'Home',url:'/menu/home',icon:'home'},
-    {title:'Transaction',url:'/menu/transaction',icon:'git-compare'},
-    {title:'Operations',url:'/menu/operations',icon:'eye'},
-    {title:'Commissions',url:'/menu/commissions',icon:'logo-usd'},
-   // {title:'operationsList',url:'/menu/list-operation-id',icon:'logo-usd'},
-    {title:'Logout',url:'logout',icon:'walk'},
+      {title:'Home',url:'/menu/home',icon:'home'},
+      {
+        title : 'Transaction',
+        children: [
+            { title:'Envoi',url:'/menu/transaction',icon:'git-compare'},
+            {title:'Retrait',url:'/menu/retrait',icon:'eye'},
+      ]
+      },
+      {title:'Operations',url:'/menu/operations',icon:'eye'},
+      {title:'Commissions',url:'/menu/commissions',icon:'logo-usd'},
+      // {title:'operationsList',url:'/menu/list-operation-id',icon:'logo-usd'},
+      {title:'Logout',url:'logout',icon:'walk'},
   ]
   constructor(private router :Router, private auth : AuthenticationService) { }
 

@@ -6,12 +6,30 @@
   </ion-header>
   
   <ion-content>
-    <ion-menu-toggle *ngFor="let m of menus" >
-      <ion-item (click)="onMenuAction(m)">
+    <div *ngFor="let m of menus">
+    <ion-menu-toggle  *ngIf="m.url" >
+      <ion-item (click)="onMenuAction(m)" routerDirection="root" routerLinkActive="active">
         <ion-icon [name]="m.icon" slot="start"></ion-icon>
         <ion-label>{{m.title}}</ion-label>
       </ion-item>
     </ion-menu-toggle>
+    <ion-item button *ngIf="m.children?.length > 0"  (click)="m.open = !m.open"
+      [class.active-parent]="m.open" detail="false">
+      <ion-icon name="arrow-forward" slot="start" *ngIf="!m.open" ></ion-icon>
+      <ion-icon name="arrow-down" slot="start" *ngIf="m.open" ></ion-icon>
+      <ion-label>{{m.title}}</ion-label>
+
+    </ion-item>
+
+    <ion-list *ngIf="m.open" >
+        <ion-menu-toggle >
+            <ion-item class="sub-item" *ngFor="let sub of m.children" [routerLink]="sub.url" routerDirection="root" routerLinkActive="active">
+                <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+                <ion-label>{{sub.title}}</ion-label>
+            </ion-item>
+        </ion-menu-toggle>
+    </ion-list> 
+  </div>
   </ion-content>
   
 </ion-menu>

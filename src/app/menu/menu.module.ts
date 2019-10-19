@@ -18,7 +18,8 @@ const routes: Routes = [
       { path: 'operations', loadChildren: '../operations/operations.module#OperationsPageModule' },
       { path: 'commissions', loadChildren: '../commissions/commissions.module#CommissionsPageModule' },
       { path: 'list-operation-id/:id', loadChildren: '../list-operation-id/list-operation-id.module#ListOperationIdPageModule' },
-
+      { path: 'retrait', loadChildren: '../retrait/retrait.module#RetraitPageModule' },
+      
     ]
   },
 ];
