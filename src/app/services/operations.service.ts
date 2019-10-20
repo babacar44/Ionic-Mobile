@@ -13,6 +13,8 @@ export class OperationsService {
   private _OperationsList = " http://localhost:8000/api/listerOperation";
 
   private _getIt ="http://localhost:8000/api/listeroperations/";
+
+  private getByPeriode = "http://localhost:8000/api/listerperiode";
   
   constructor(private http : HttpClient, private _injector : Injector) { }
 
@@ -35,7 +37,7 @@ getItOperationById(id) : Observable<[]>{
     return this.http.post<any>(this._retrait,data)
   }
   
-  faireRetrait(data){
+faireRetrait(data){
 console.log(data)
 const dat={
   CodeEnvoi: data.CodeEnvoi,
@@ -53,5 +55,18 @@ console.log(dat)
 ListerOperations() :Observable<any>{
   return this.http.get<any>(this._OperationsList);
 }
+
+
+searchByDate(data){
+  console.log(data)
+  const dat={
+    debut:data.debut,
+    fin: data.fin
+  }
+  console.log(dat)
+      return this.http.post<any>(this.getByPeriode,dat)
+   //   .map((res) => res).catch(this.authentication.handleError)
+    
+    }
 
 }

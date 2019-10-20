@@ -12,50 +12,50 @@
     <ion-label>CodeEnvoi</ion-label> 
     <ion-input type="text" [(ngModel)]="codeEnvoiArray.CodeEnvoi"></ion-input>
     <button (click)="onRetrait(codeEnvoiArray.CodeEnvoi)"  class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
+  </ion-item> <br>
 
-  </ion-item> 
+  <ion-list *ngIf="afficher" > 
+  <ion-item>CodeEnvoi :{{codeEnvoiArray.CodeEnvoi}}</ion-item>
+  <ion-item>Montant :{{codeEnvoiArray.Montant}} FCFA</ion-item>
+  <ion-item>Envoyeur: {{codeEnvoiArray.Envoyeur}}</ion-item> 
+  <ion-item>dateEnvoi: {{codeEnvoiArray.dateEnvoi}}</ion-item>
+  <ion-item>telEnvoyeur: {{codeEnvoiArray.telEnvoyeur}}</ion-item>
+  <ion-item>telRecepteur: {{codeEnvoiArray.telRecepteur}}</ion-item>
+  <ion-item>commission: {{codeEnvoiArray.commission}} FCFA</ion-item>
+</ion-list>
 </ion-content> 
-  <!-- <form class="form-inline md-form mr-auto mb-4"  #retraitForm="ngForm" >
-        <input [(ngModel)]="codeEnvoiArray.CodeEnvoi" name="CodeEnvoi" class="form-control mr-sm-2" type="text" placeholder="CodeEnvoi" required>
-        <div class="form-group">
-      
-          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}
-      
+  <!-- 
+        <div class="form-group">  
+          <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}    
           </div>
-        </div>  
-        <button (click)="onRetrait(codeEnvoiArray.CodeEnvoi)"  class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit">Search</button>
-      </form> 
-      
-      <div class="jumbtron">
-        
-        <div class="row" *ngIf="afficher" >
-
-          <div class="col-md-7">
-              <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">CodeEnvoi</th>
-                      <th scope="col">Envoyeur</th>
-                      <th scope="col">Montant</th>
-                      <th scope="col">Destinataire</th>
-                      <th scope="col">telRecepteur</th>
-                      <th scope="col">ComRetrait</th>
-      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr >
-                      <td>{{codeEnvoiArray.CodeEnvoi}}</td>
-                      <td>{{codeEnvoiArray.Envoyeur}}</td>
-                      <td>{{codeEnvoiArray.Montant}} CFA</td>
-                      <td>{{codeEnvoiArray.Destinataire}}</td>
-                      <td>{{codeEnvoiArray.telRecepteur}}</td>
-                      <td>{{codeEnvoiArray.comRetrait}} CFA</td>
-                      
-                    </tr>
-                   
-                  </tbody>
-                </table>
-      
+        </div>     
           </div>
        --> 
+       <div class="col-md-5"  *ngIf="afficher" >
+          <div class="row pt-5">
+              <div class="col-md-6 mx-auto">
+                <div class="card rounded-0">
+                  <div class="card-header">
+                    <h3 class="mb-0">Faire un Retrait</h3>
+                  </div>
+                  <div class="card-body" >
+                    <form class="form" #validerForm="ngForm">  
+                      <div class="form-group">
+                        <label for="">Code de Retrait</label>
+                        <input  [(ngModel)]="infoRetrait.CodeEnvoi" name="CodeEnvoi" type="text" class="form-control rounded-0" placeholder="codeRetrait" required>
+                      </div>
+            
+                      <div class="form-group">
+                        <label for="">CNI</label>
+                        <input [(ngModel)]="infoRetrait.cniRecepteur" name="cniRecepteur" type="text" class="form-control rounded-0" placeholder="CNI" required>
+                      </div>
+  
+            
+                      <button (click)="DoRetrait(infoRetrait)" type="submit" class="btn btn-success float-right">
+                        Retrait
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>

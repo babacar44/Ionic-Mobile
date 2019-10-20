@@ -16,6 +16,8 @@ export class MenuPage implements OnInit {
         children: [
             { title:'Envoi',url:'/menu/transaction',icon:'git-compare'},
             {title:'Retrait',url:'/menu/retrait',icon:'eye'},
+            { title: 'List', url: '/menu/list',icon:'eye' },
+
       ]
       },
       {title:'Operations',url:'/menu/operations',icon:'eye'},

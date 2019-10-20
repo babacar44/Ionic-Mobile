@@ -10,10 +10,11 @@
 <ion-content class="ion-padding">
 
 <ion-list *ngIf="op" >     
-    <ion-item>CodeEnvoi :{{op.CodeEnvoi}}</ion-item>
-  <ion-item>Montant :{{op.Montant}} FCFA</ion-item>
+    <ion-item>CodeEnvoi : {{op.CodeEnvoi}}</ion-item>
+  <ion-item>Montant : {{op.Montant}} FCFA</ion-item>
   <ion-item>Envoyeur: {{op.Envoyeur}}</ion-item> 
-  <ion-item>dateEnvoi: {{op.dateEnvoi}}</ion-item>
+  <ion-item>Destinataire: {{op.Destinataire}}</ion-item>
+  <ion-item>Date: {{op.date}}</ion-item>
   <ion-item>telEnvoyeur: {{op.telEnvoyeur}}</ion-item>
   <ion-item>telRecepteur: {{op.telRecepteur}}</ion-item>
   <ion-item>commission: {{op.commission}} FCFA</ion-item>

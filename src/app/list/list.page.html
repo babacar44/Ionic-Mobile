@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-toolbar  color="success">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-searchbar type="text" [(ngModel)]="infoOperation.debut"  name="debut" maxlength="10" placeholder="Search" debounce="0" 
+     ></ion-searchbar>
+     <ion-searchbar type="text" [(ngModel)]="infoOperation.fin"  name="fin" placeholder="Search" debounce="0" 
+     ></ion-searchbar>
+     <ion-button (click)="ByPeriode(infoOperation)" expand="block" color="success">
+      Find
+    </ion-button>
+  </ion-content>

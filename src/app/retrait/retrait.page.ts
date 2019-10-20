@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { OperationsService } from '../services/operations.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -23,8 +24,8 @@ export class RetraitPage implements OnInit {
   afficher:boolean=false;
 
   infoRetrait={}
-
-  constructor(private _operer : OperationsService, private _toastr : ToastrService) { }
+  constructor(private _operer : OperationsService, private _toastr : ToastrService,
+              private _router : Router) { }
 
   ngOnInit() {
     this.reseteForm;
@@ -61,15 +62,18 @@ DoRetrait(infoRetrait){
   this._operer.faireRetrait(infoRetrait)
   .subscribe(
     data=>{
-      this._toastr.success('retrait validé sur le compte '),
-
       console.log(data);
       this.infoRetrait = data
+      this._toastr.success('retrait validé sur le compte ')
+      this._router.navigateByUrl("/menu/operations")
+
     },
   
   error=>{this.errorMessage = error.error.message,
     console.log(this.errorMessage)}
     );
 }
+
+
 
 }
