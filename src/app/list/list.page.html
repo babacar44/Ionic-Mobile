@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="padding">
     <ion-searchbar type="text" [(ngModel)]="infoOperation.debut"  name="debut" maxlength="10" placeholder="Search" debounce="0" 
      ></ion-searchbar>
      <ion-searchbar type="text" [(ngModel)]="infoOperation.fin"  name="fin" placeholder="Search" debounce="0" 
@@ -15,4 +15,19 @@
      <ion-button (click)="ByPeriode(infoOperation)" expand="block" color="success">
       Find
     </ion-button>
+
+    <div *ngIf="afficher">
+    <ion-list *ngFor="let o of infoOperation" >     
+      <ion-item>CodeEnvoi : {{o.CodeEnvoi}}</ion-item>
+    <ion-item>Montant : {{o.Montant}} FCFA</ion-item>
+    <ion-item>Envoyeur: {{o.Envoyeur}}</ion-item> 
+    <ion-item>Destinataire: {{o.Destinataire}}</ion-item>
+    <ion-item>Date: {{o.date}}</ion-item>
+    <ion-item>telEnvoyeur: {{o.telEnvoyeur}}</ion-item>
+    <ion-item>telRecepteur: {{o.telRecepteur}}</ion-item>
+    <ion-item>commission: {{o.commission}} FCFA</ion-item>
+    <ion-item>##############################</ion-item>
+
+  </ion-list>
+</div>
   </ion-content>

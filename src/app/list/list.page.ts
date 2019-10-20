@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class ListPage implements OnInit {
   infoOperation={}
   errorMessage : string;
+  afficher:boolean=false;
 
 
   constructor(private _operer : OperationsService, private _toastr : ToastrService,
@@ -28,7 +29,8 @@ export class ListPage implements OnInit {
         console.log(data);
         console.log(this.infoOperation);
         this.infoOperation = data
-  
+        this.afficher=true;
+
       },
     
     error=>{this.errorMessage = error.error.message,
