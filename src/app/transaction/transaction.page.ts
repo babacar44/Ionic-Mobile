@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { OperationsService } from '../services/operations.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.page.html',
@@ -12,8 +11,6 @@ import { ToastrService } from 'ngx-toastr';
 export class TransactionPage implements OnInit {
 
   errorMessage : string;
-afficherRecu=false;
-
  postEnvoi ={};
 
   constructor(private _operationService : OperationsService,
@@ -43,4 +40,7 @@ afficherRecu=false;
   }
 }
   }
+
+ 
+  
 }

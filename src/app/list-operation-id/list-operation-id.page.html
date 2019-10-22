@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="!afficherRecu">
     <ion-toolbar  color="success">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="!afficherRecu">
 
 <ion-list *ngIf="op" >     
     <ion-item>CodeEnvoi : {{op.CodeEnvoi}}</ion-item>
@@ -19,7 +19,34 @@
   <ion-item>telRecepteur: {{op.telRecepteur}}</ion-item>
   <ion-item>commission: {{op.commission}} FCFA</ion-item>
 </ion-list>
-<ion-button  expand="block" color="success">
+<ion-button  expand="block" color="success" (click)="recu()">
     Imprimer
   </ion-button>
 </ion-content>
+
+<fieldset *ngIf="afficherRecu">
+  <legend>WariApps</legend>
+  <h3 class="text-center titre">Reçu d'envoi</h3>
+ <!-- <div class="row">
+      <p class="col-sm-3"><strong>Entreprise :</strong> {{rep.Entreprise.RaisonSociale}}</p>
+      <p class="col-sm-3"><strong>Guichetier :</strong> {{rep.Entreprise.Guichetier}}</p>
+      <p class="col-sm-3"><strong>Adresse :</strong> {{rep.Entreprise.Adresse}}</p>
+      <p class="col-sm-3"><strong>Date :</strong> {{rep.Entreprise.Date}}</p>
+  </div>-->
+  <fieldset>
+      <legend>Bénéficiaire</legend>
+      <p>Nom : {{op.Destinataire}}</p>
+      <p>Téléphone : {{op.telRecepteur}}</p>
+  </fieldset>
+  <fieldset>
+      <legend>Envoyeur</legend>
+      <p>Nom : {{op.Envoyeur}}</p>
+      <p>Téléphone : {{op.telEnvoyeur}}</p>
+  </fieldset>
+  <fieldset>
+      <legend>Transaction</legend>
+      <p>Code : {{op.CodeEnvoi}}</p>
+      <p>Commissions TTC : {{op.commission}} FCFA </p>
+      <p>Montant Envoyé : {{op.Montant}} FCFA</p>
+  </fieldset>
+</fieldset>

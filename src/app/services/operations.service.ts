@@ -15,6 +15,8 @@ export class OperationsService {
   private _getIt ="http://localhost:8000/api/listeroperations/";
 
   private getByPeriode = "http://localhost:8000/api/listerperiode";
+
+  private commissin ="http://localhost:8000/api/totalcommission";
   
   constructor(private http : HttpClient, private _injector : Injector) { }
 
@@ -69,4 +71,8 @@ searchByDate(data){
     
     }
 
+
+    getTotalCom() : Observable<[]>{
+      return this.http.get<[]>(this.commissin);
+    }
 }

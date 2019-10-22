@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ListOperationIdPage implements OnInit {
   op: any;
   id:number;
+  afficherRecu=false;
 
   constructor(private operlist : OperationsService,private router :Router
     ,private route :ActivatedRoute) { }
@@ -26,5 +27,11 @@ export class ListOperationIdPage implements OnInit {
     )
   }
       
+  recu(){
+    this.afficherRecu=true;
+    setTimeout(()=>{
+      window.print();
+    },3000)
+  }
 
 }
