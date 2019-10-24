@@ -1,15 +1,43 @@
-<ion-header>
-    <ion-toolbar  color="success">
+<!--<ion-header slot="top">
+  <ion-toolbar  color="success">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-title>commissions</ion-title>
+    <ion-title>operations</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-  <ion-list *ngIf="donnee" >     
-    <ion-item>TotalCom : {{donnee[0].comm}}</ion-item>
+<ion-content class="ion-padding">
 
+    <ion-item  >
+        <ion-label>Operations Details</ion-label>
+        <ion-icon slot="start" color="success" name="eye" [routerLink]="['/menu/transaction']"></ion-icon>
+      </ion-item>
+      <ion-item >
+          <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2012-12-09"></ion-datetime>
+
+          <ion-label>Date</ion-label>
+          <ion-label>Montant FCFA</ion-label>
+      </ion-item>
+      <ion-list>     
+<ion-item *ngFor="let o of Operations" >
+  <ion-label>{{o.date}}</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <ion-label>{{o.Montant}} </ion-label>
+  <ion-icon slot="end" color="success" name="eye" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>
+</ion-item>
 </ion-list>
+
+
+
+    <ion-list *ngIf="op"class="ion-padding" *ngIf="afficherRecu" >     
+        <ion-item>CodeEnvoi : {{op.CodeEnvoi}}</ion-item>
+      <ion-item>Montant : {{op.Montant}} FCFA</ion-item>
+      <ion-item>Envoyeur: {{op.Envoyeur}}</ion-item> 
+      <ion-item>Destinataire: {{op.Destinataire}}</ion-item>
+      <ion-item>Date: {{op.date}}</ion-item>
+      <ion-item>telEnvoyeur: {{op.telEnvoyeur}}</ion-item>
+      <ion-item>telRecepteur: {{op.telRecepteur}}</ion-item>
+      <ion-item>commission: {{op.commission}} FCFA</ion-item>
+    </ion-list>
+
 </ion-content>

@@ -5,14 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="row pt-5">
-    <div class="col-md-6 mx-auto">
-      <div class="card rounded-0">
+    
         <ion-card class="card-body">
-          <form class="form">
-            <div class="form-group">
-              <ion-input [(ngModel)]="loginUserData.email" name="email" type="text" class="form-control rounded-0" required  placeholder="email"></ion-input>
-            </div>
+          <form  [formGroup]="user">
+            
+              <ion-item >
+              <ion-icon name="mail" slot="start" color="success"></ion-icon>
+              <ion-input formControlName="email" name="email" type="text"  required  placeholder="email"></ion-input>
+              </ion-item >
 
             <!-- <div class="form-group">
 
@@ -21,15 +21,14 @@
                 </div>
               </div> -->
 
-            <div class="form-group">
-              <ion-input [(ngModel)]="loginUserData.password" name="password" type="password" class="form-control rounded-0" required placeholder="password"></ion-input>
-            </div>
-            <ion-button (click)="loginUser()" expand="block" color="success">
+            <ion-item >
+                <ion-icon slot="start" name="key" color="success"> </ion-icon>
+              <ion-input formControlName="password" name="password"  type="password"  required placeholder="password"></ion-input>
+            </ion-item>
+            <ion-button (click)="loginUser(user.value)" expand="block" color="success" [disabled]="!user.valid">
               Login
             </ion-button>
           </form>
         </ion-card>
-      </div>
-    </div>
-  </div>
+
 </ion-content>

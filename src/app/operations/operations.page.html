@@ -1,27 +1,128 @@
-<ion-header>
-    <ion-toolbar  color="success">
+<ion-header slot="top">
+  <ion-toolbar  color="success">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-title>operations</ion-title>
+    <ion-title>Details Operations</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> 
 
 <ion-content class="ion-padding">
-
-    <ion-item  >
+    <ion-segment (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="operations">
+          <ion-label>Transactions</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="commissions">
+          <ion-label>Commission</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+  
+ <!-- 
+  afficher operations par  debut 
+  <ion-item  >
         <ion-label>Operations Details</ion-label>
         <ion-icon slot="start" color="success" name="eye" [routerLink]="['/menu/transaction']"></ion-icon>
       </ion-item>
+ 
+  <ion-list *ngIf="!afficher">     
+  <ion-item *ngFor="let o of Operations" >
+    <ion-label>montant: {{o.Montant}} <br>
+      date :{{o.date}} <br>
+      comm : {{o.commission}}
+    </ion-label>
+    <ion-icon slot="end" color="success" name="eye" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>
+  </ion-item>
+  </ion-list>
+-->
+
+<!-- 
+  afficher operations par  debut 
+ <ion-item>
+<ion-input type="Date" [(ngModel)]="infoOperation.debut"   debounce="0"  
+     ></ion-input>
+     <ion-input type="Date" [(ngModel)]="infoOperation.fin"  debounce="0" 
+     ></ion-input>
+  </ion-item> ù
+   <ion-button (click)="ByPeriode(infoOperation)"  color="success">
+      Find
+    </ion-button>
       <ion-item >
-          <ion-label>Date</ion-label>
-          <ion-label>Montant FCFA</ion-label>
+      <ion-datetime displayFormat="YYYY/MM/DD" picker-format="YYYY/MM/DD" formControlName="debut" name="debut"></ion-datetime>
+      <ion-datetime displayFormat="YYYY/MM/DD" picker-format="YYYY/MM/DD" formControlName="fin" name="fin"></ion-datetime>
+  </ion-item>
+-->
+<form [formGroup]="myform">
+<ion-list>
+  <ion-item >
+      <ion-datetime displayFormat="YYYY/MM/DD"  formControlName="debut" ></ion-datetime>
+      <ion-datetime displayFormat="YYYY/MM/DD"  formControlName="fin" ></ion-datetime>
+      <ion-button (click)="ByPeriode(myform)"  color="success" slot="end">Find</ion-button>
+        
+    </ion-item>
+      </ion-list> 
+    <div *ngIf="afficher">
+      <ion-list *ngFor="let o of myform" >   
+      <ion-item>{{o.Montant}} <br>
+        {{o.date}}
+        <ion-icon slot="end" color="success" name="eye" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>  
       </ion-item>
-      <ion-list>     
-<ion-item *ngFor="let o of Operations" >
-  <ion-label>{{o.date}}</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <ion-label>{{o.Montant}} </ion-label>
-  <ion-icon slot="end" color="success" name="create" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>
-</ion-item>
-</ion-list>
+      <ion-item-divider color="success">{{o.type}}</ion-item-divider>
+    </ion-list>
+  </div>
+</form> 
+    <!-- 
+  afficher operations par  debut 
+  <ion-item>CodeEnvoi : {{o.CodeEnvoi}}</ion-item>
+    <ion-item>Montant : {{o.Montant}} FCFA</ion-item>
+    <ion-item>Envoyeur: {{o.Envoyeur}}</ion-item> 
+    <ion-item>Destinataire: {{o.Destinataire}}</ion-item>
+    <ion-item>Date: {{o.date}}</ion-item>
+    <ion-item>telEnvoyeur: {{o.telEnvoyeur}}</ion-item>
+    <ion-item>telRecepteur: {{o.telRecepteur}}</ion-item>
+    <ion-item>commission: {{o.commission}} FCFA</ion-item>
+    <ion-item-divider color="success">Transaction</ion-item-divider>-->
+
+
+
+    <!--<div *ngIf="montrer && !afficher">
+    <ion-list *ngFor="let m of infoOperation" >   
+      <ion-label>{{m.Montant}} <br>
+      {{m.date}} <br>
+      {{o.commission}}
+    </ion-label>
+    <ion-icon slot="end" color="success" name="eye" (click)="listOperationById(m.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>  
+  </ion-list>
+</div>   
+ 
+  afficher operations par  debut 
+  <ion-item>CodeEnvoi : {{o.CodeEnvoi}}</ion-item>
+    <ion-item>Montant : {{o.Montant}} FCFA</ion-item>
+    <ion-item>Envoyeur: {{o.Envoyeur}}</ion-item> 
+    <ion-item>Destinataire: {{o.Destinataire}}</ion-item>
+    <ion-item>Date: {{o.date}}</ion-item>
+    <ion-item>telEnvoyeur: {{o.telEnvoyeur}}</ion-item>
+    <ion-item>telRecepteur: {{o.telRecepteur}}</ion-item>
+    <ion-item>commission: {{o.commission}} FCFA</ion-item>
+    <ion-item-divider color="success">Transaction</ion-item-divider>
+
+ 
+
+  afficher operations par  fin 
+-->
+
+<div *ngIf="montrer">
+    <ion-list *ngFor="let o of myform" >   
+      <ion-label>
+    </ion-label>
+    <ion-item>{{o.Montant}} <br>
+      {{o.date}} <br>
+      {{o.commission}}
+      <ion-icon slot="end" color="success" name="eye" (click)="listOperationById(o.id)" [routerLink]="['/menu/list-operation-id/']"></ion-icon>  
+    </ion-item>
+    <ion-item-divider color="success">{{o.type}}</ion-item-divider>
+
+  </ion-list>
+</div>
+
+
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {Router} from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,9 +20,12 @@ export class LoginPage implements OnInit {
     ngOnInit() {
 
     }
-
-    loginUser(){
-        this._auth.login(this.loginUserData)
+user= new FormGroup({
+  email : new FormControl('',[Validators.required,Validators.minLength(3)]),
+  password : new FormControl('',Validators.required)
+})
+    loginUser(donnee){
+        this._auth.login(donnee)
             .subscribe(
                 res=>{
                     console.log(res)
@@ -32,7 +36,7 @@ export class LoginPage implements OnInit {
                     this._router.navigateByUrl('/menu/home');
 
 },error=>{this.errorMessage = error
-                    // console.log(this.errorMessage)
+                   //  console.log(this.errorMessage)
                 }
             )
     }

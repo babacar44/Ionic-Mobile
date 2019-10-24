@@ -19,7 +19,6 @@ const routes: Routes = [
       { path: 'commissions', loadChildren: '../commissions/commissions.module#CommissionsPageModule' },
       { path: 'list-operation-id/:id', loadChildren: '../list-operation-id/list-operation-id.module#ListOperationIdPageModule' },
       { path: 'retrait', loadChildren: '../retrait/retrait.module#RetraitPageModule' },
-      { path: 'list', loadChildren: '../list/list.module#ListPageModule' },
 
     ]
   },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OperationsService } from '../services/operations.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-commissions',
@@ -10,21 +10,32 @@ import { Router } from '@angular/router';
 })
 export class CommissionsPage implements OnInit {
 
-  donnee:{}
-  errorMessage : String;
-  constructor(private _operer : OperationsService, private _toastr : ToastrService,
-    private _router : Router) { }
+  Operations : [];
+  id:number;
+  op: any;
+
+  afficherRecu=false;
+
+  constructor(private operlist : OperationsService,private router :Router
+    ,private route :ActivatedRoute) { }
 
   ngOnInit() {
-    this._operer.getTotalCom().subscribe(
-      data=>{
-          this.donnee =data;
-          console.log(data);
-
-      }
+    this.operlist.ListerOperations()
+    .subscribe(
+      res=>{
+        this.Operations = res
+      //  console.log(res);
+        console.log(this.Operations);
+      },
+      error=>console.log(error),
     )
-    error=>{this.errorMessage = error,
-      console.log(this.errorMessage)}
+  }
+  getOp(){
+
+    
+  }
+  listOperationById(id:number){
+    this.router.navigate(['/menu/list-operation-id/',id]);
   }
 
 }
