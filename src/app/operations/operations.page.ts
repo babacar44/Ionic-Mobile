@@ -13,6 +13,8 @@ export class OperationsPage implements OnInit {
   Operations : [];
   id:number;
   op: any;
+  datas:any;
+  tarif: any;
   //////////////////////////
 
 
@@ -20,7 +22,6 @@ export class OperationsPage implements OnInit {
   errorMessage : string;
   afficher:boolean=false;
   montrer:boolean=false;
-
 
 
 
@@ -43,7 +44,7 @@ export class OperationsPage implements OnInit {
     )*/
   }
 
- 
+
     now=new Date().toDateString();
     myform= new FormGroup({  
       debut: new FormControl(this.now,[Validators.required]),
@@ -59,12 +60,14 @@ export class OperationsPage implements OnInit {
  
 ///////////////////////
 ByPeriode(){
+  //console.log(this.myform);
+  
   this.operlist.searchByDate(this.myform.value) 
    .subscribe(
     data=>{
       console.log(data);
       console.log(this.myform);
-      this.myform = data
+      this.datas = data;
       this.afficher=true;
       this.montrer=true;
 
@@ -89,5 +92,7 @@ segmentChanged(event:CustomEvent<SegmentChangeEventDetail>){
 
   }
 }
+
+
 
 }

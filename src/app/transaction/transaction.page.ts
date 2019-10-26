@@ -12,6 +12,8 @@ export class TransactionPage implements OnInit {
 
   errorMessage : string;
  postEnvoi ={};
+ montant = []
+
 
   constructor(private _operationService : OperationsService,
     private _router : Router,
@@ -31,7 +33,7 @@ export class TransactionPage implements OnInit {
 
         console.log(data);
         this._toastr.success('envoi effectué');
-      this._router.navigateByUrl("/menu/operations")},
+      this._router.navigateByUrl("/menu/tous-operations")},
     )
 }else{
   error =>{
@@ -41,6 +43,18 @@ export class TransactionPage implements OnInit {
 }
   }
 
+  infotarif(montant){
+    console.log(montant);
+    this._operationService.getTarifs(montant)
+   .subscribe(
+     res => {
+       this.montant=res;
+       console.log(this.montant)
+      },
+  
+     err => console.log(err)
+   )
+   }
  
   
 }

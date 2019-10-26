@@ -18,6 +18,8 @@ export class OperationsService {
 
   private commissin ="http://localhost:8000/api/totalcommission";
   
+  private tarifs ="http://localhost:8000/api/tarif";
+
   constructor(private http : HttpClient, private _injector : Injector) { }
 
 
@@ -74,5 +76,16 @@ searchByDate(data){
 
     getTotalCom() : Observable<[]>{
       return this.http.get<[]>(this.commissin);
+    }
+
+    getTarifs(frais){
+      console.log(frais)
+      const dat={
+        montant: frais,
+      }
+  console.log(dat)
+      return this.http.post<any>(this.tarifs,dat)
+   //   .map((res) => res).catch(this.authentication.handleError)
+    
     }
 }

@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-        <form >  
-  
+        <form #f=ngForm >  
+  <ion-list>
         <ion-item>
             <ion-input  placeholder="Destinataire"  [(ngModel)]="postEnvoi.Destinataire" name="Destinataire"> </ion-input>
         </ion-item>
@@ -19,10 +19,12 @@
         </ion-item>
         
         <ion-item>
-          <ion-input placeholder="Montant"  [(ngModel)]="postEnvoi.Montant" name="Montant"></ion-input>
+          <ion-input placeholder="Montant"  (keyup)="infotarif(f.value.Montant)" [(ngModel)]="postEnvoi.Montant" name="Montant"></ion-input>
       </ion-item>
-
-    
+      
+      <ion-item *ngFor="let p of montant" >
+      <ion-input type="number" value="{{p.valeur}}" class="form-control" readonly></ion-input>
+    </ion-item>
           <ion-item>
             <ion-input placeholder="cniEnvoyeur"  [(ngModel)]="postEnvoi.cniEnvoyeur" name="cniEnvoyeur"></ion-input>
         </ion-item>
@@ -34,7 +36,7 @@
           <ion-item>
               <ion-input  placeholder="telRecepteur"  [(ngModel)]="postEnvoi.telRecepteur" name="telRecepteur"></ion-input>
         </ion-item>
-    
+      </ion-list>  
           <ion-button  (click)="faireEnvoi()" expand="block" color="success">
             Envoyer
           </ion-button>     
